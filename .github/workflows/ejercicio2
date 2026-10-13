@@ -1,0 +1,20 @@
+name: Ejercicio 2 - Manejo de secretos
+
+on:
+  workflow_dispatch:
+
+env:
+  GLOBAL_USER: "estudiante_edem"
+
+jobs:
+  simular_login:
+    name: "Simular login"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login simulado con secreto
+        env:
+          DB_PASSWORD: ${{ secrets.contrasena }}
+        run: |
+          echo "Iniciando sesión como $GLOBAL_USER"
+          echo "Contraseña recibida: $DB_PASSWORD"
+          echo "Login simulado completado"
