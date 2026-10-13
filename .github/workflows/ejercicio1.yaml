@@ -1,0 +1,23 @@
+name: Ejercicio 1 - Variables de entorno globales
+
+on:
+  workflow_dispatch:
+
+env:
+  GLOBAL_USER: "estudiante_edem"
+  DB_NAME: "dwh_curso"
+
+jobs:
+  job_uno:
+    name: "Job 1"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar variable con sintaxis de shell
+        run: echo "El usuario en Job 1 es $GLOBAL_USER y la BBDD es $DB_NAME"
+
+  job_dos:
+    name: "Job 2"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar variable con el contexto env
+        run: echo "El usuario en Job 2 es ${{ env.GLOBAL_USER }} y la BBDD es ${{ env.DB_NAME }}"
